@@ -1,6 +1,4 @@
 pathlib
-gspread
-gspread_dataframe
 pandas
 numpy
 dash
