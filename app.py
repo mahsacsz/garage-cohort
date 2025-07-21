@@ -12,9 +12,6 @@ cohort_normalized = pd.read_csv(url)
 
 cohort_normalized = cohort_normalized.set_index(["segment","subcategory"])
 
-for col in cohort_normalized.columns:
-    cohort_normalized[col] = pd.to_numeric(cohort_normalized[col], downcast='float')
-
 ############dashboard#####################
 
 
