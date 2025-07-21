@@ -117,41 +117,42 @@ app.layout = html.Div([
 
     dash_table.DataTable(
          id='cohort-table',
-...         data=df_percent.to_dict('records'),
-...         columns=[{'name': i, 'id': i} for i in df_percent.columns],
-...         style_table={'overflowX': 'auto'},
-...         style_cell={
-...             'textAlign': 'center',
-...             'minWidth': '100px',
-...             'maxWidth': '180px',
-...             'whiteSpace': 'normal',
-...         },
-...         style_data_conditional=style_data_conditional,
-...         style_header={
-...             'backgroundColor': 'rgb(230, 230, 230)',
-...             'fontWeight': 'bold'
-...         },
-...         fixed_rows={'headers': True},
-...         page_size=100
-...     )
-... ])
-... 
-... @app.callback(
-...     Output('cohort-table', 'data'),
-...     Input('segment-filter', 'value'),
-...     Input('subcategory-filter', 'value')
-... )
-... def update_table(selected_segment, selected_subcategory):
-...     filtered_df = df_percent.copy()
-...     
-...     if selected_segment:
-...         filtered_df = filtered_df[filtered_df['segment'] == selected_segment]
-...     
-...     if selected_subcategory:
-...         filtered_df = filtered_df[filtered_df['subcategory'] == selected_subcategory]
-... 
-...     return filtered_df.to_dict('records')
-... 
-... if __name__ == "__main__":
-...     --app.run(debug=True)
-...     port = int(os.environ.get("PORT", 8050))
+        data=df_percent.to_dict('records'),
+        columns=[{'name': i, 'id': i} for i in df_percent.columns],
+        style_table={'overflowX': 'auto'},
+        style_cell={
+            'textAlign': 'center',
+            'minWidth': '100px',
+            'maxWidth': '180px',
+            'whiteSpace': 'normal',
+        },
+        style_data_conditional=style_data_conditional,
+        style_header={
+            'backgroundColor': 'rgb(230, 230, 230)',
+            'fontWeight': 'bold'
+        },
+        fixed_rows={'headers': True},
+        page_size=100
+    )
+])
+
+@app.callback(
+    Output('cohort-table', 'data'),
+    Input('segment-filter', 'value'),
+    Input('subcategory-filter', 'value')
+)
+def update_table(selected_segment, selected_subcategory):
+    filtered_df = df_percent.copy()
+    
+    if selected_segment:
+        filtered_df = filtered_df[filtered_df['segment'] == selected_segment]
+    
+    if selected_subcategory:
+        filtered_df = filtered_df[filtered_df['subcategory'] == selected_subcategory]
+
+    return filtered_df.to_dict('records')
+
+if __name__ == "__main__":
+    --app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(host="0.0.0.0", port=port, debug=False)
