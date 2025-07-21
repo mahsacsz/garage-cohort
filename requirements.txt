@@ -7,3 +7,4 @@ google.oauth2
 pandas
 numpy
 dash
+gunicorn
