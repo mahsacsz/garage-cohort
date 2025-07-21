@@ -1,7 +1,6 @@
 pathlib
 gspread
 gspread_dataframe
-google.oauth2.service_account
 pydrive.auth
 google.oauth2
 pandas
