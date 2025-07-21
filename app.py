@@ -20,7 +20,7 @@ value_cols = cohort_normalized.columns
 df_percent = cohort_normalized.copy()
 
 for col in value_cols:
-    df_percent[col] = cohort_normalized[col] * 100
+    df_percent[col] = (cohort_normalized[col] * 100).round(1)
 
 df_percent.reset_index(inplace=True)
 
